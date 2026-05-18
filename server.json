@@ -14,7 +14,7 @@
       "svm": "exact"
     },
     "floorPrice": "0.01",
-    "ceilingPrice": "150.00",
+    "ceilingPrice": "15.00",
     "freeTier": ["estimate_cost", "health_check"]
   },
   "tools": [
