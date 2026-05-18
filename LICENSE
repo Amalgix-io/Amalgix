@@ -1,0 +1,15 @@
+Copyright (c) 2026 Amalgix. All Rights Reserved.
+
+This repository contains documentation and configuration files for the Amalgix
+Document Intelligence Engine. The Amalgix engine source code, including but not
+limited to the Crucible™ pipeline, pricing engine, and all processing logic, is
+proprietary and confidential.
+
+No part of the proprietary Amalgix engine may be reproduced, distributed, or
+transmitted in any form or by any means without the prior written permission of
+the copyright holder.
+
+The documentation and configuration files in this repository are provided for
+informational purposes only and to facilitate integration with the Amalgix API.
+
+For licensing inquiries, contact: contact@amalgix.io

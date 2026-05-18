@@ -1,0 +1,82 @@
+{
+  "name": "amalgix",
+  "description": "Cross-validated document intelligence with x402 micropayments. Multi-model Actor-Critic pipeline with 3-tier smart routing — sub-30s for documents up to 3MB.",
+  "url": "https://amalgix.io/mcp",
+  "documentation": "https://amalgix.io/docs",
+  "icon": "https://amalgix.io/assets/icon.png",
+  "payment": {
+    "protocol": "x402",
+    "chains": ["base", "solana"],
+    "currency": "USDC",
+    "pricing": "dynamic",
+    "scheme": {
+      "evm": "upto",
+      "svm": "exact"
+    },
+    "floorPrice": "0.01",
+    "ceilingPrice": "150.00",
+    "freeTier": ["estimate_cost", "health_check"]
+  },
+  "tools": [
+    {
+      "name": "analyze_document",
+      "description": "Deep document analysis with cross-provider AI verification. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or MoA chunking (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
+      "maxInputSize": "20MB",
+      "outputFormat": "structured_json",
+      "pricing": "dynamic — from $0.02 (small doc) to ~$55 (20MB). Call estimate_cost first.",
+      "floorPrice": "0.02",
+      "latency": "3s–20min depending on document size",
+      "paid": true
+    },
+    {
+      "name": "estimate_cost",
+      "description": "FREE: Get a precise price quote before paying. Pass your content to see exact USDC cost, routing tier, and estimated latency.",
+      "paid": false
+    },
+    {
+      "name": "health_check",
+      "description": "FREE: Check service availability, engine status, and uptime before dispatching paid calls.",
+      "paid": false
+    },
+    {
+      "name": "extract_web",
+      "description": "Extract and analyze content from any URL. Supports JavaScript-rendered pages.",
+      "floorPrice": "0.02",
+      "paid": true
+    },
+    {
+      "name": "summarize",
+      "description": "Fast, cheap summary with key points. Best for short documents. Cheaper than analyze_document.",
+      "floorPrice": "0.01",
+      "paid": true
+    },
+    {
+      "name": "delegate_coding",
+      "description": "Generate, review, or extract code. Modes: generate, review, extract. Returns structured code blocks.",
+      "floorPrice": "0.02",
+      "paid": true
+    },
+    {
+      "name": "delegate_bulk_translate",
+      "description": "Translate all string values in a JSON object to any target language. Preserves structure and non-string values. Auto-chunks large payloads.",
+      "floorPrice": "0.01",
+      "paid": true
+    }
+  ],
+  "capabilities": {
+    "maxDocumentSize": "20MB",
+    "supportedFormats": ["text", "markdown", "json", "html"],
+    "qualityFeatures": [
+      "cross_provider_verification",
+      "structured_json_output",
+      "actor_critic_pipeline",
+      "smart_tier_routing"
+    ],
+    "routing": {
+      "tier1": "< 128KB — single Gemini Flash call, ~3s",
+      "tier2": "128KB–3.2MB — extract + cross-provider verify, ~10–30s",
+      "tier3": "> 3.2MB — MoA chunking pipeline, ~2–20min"
+    }
+  },
+  "privacy": "Document content is transmitted to third-party LLM providers (Google, Anthropic) for processing. Do not submit documents containing passwords, private keys, SSNs, or other regulated PII."
+}
