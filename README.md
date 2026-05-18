@@ -125,7 +125,7 @@ Amalgix uses the [x402 protocol](https://www.x402.org/) for trustless micropayme
 
 - **Currency**: USDC
 - **Chains**: Base (EVM) or Solana (SVM)
-- **Scheme**: `upto` (EVM) / `exact` (SVM)
+- **Scheme**: `exact` (both chains — ceiling pre-auth, settle actual price)
 - **Settlement**: Instant, on-chain
 
 No wallet setup required for agents — x402-compatible clients handle payment automatically.

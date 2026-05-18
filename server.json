@@ -10,7 +10,7 @@
     "currency": "USDC",
     "pricing": "dynamic",
     "scheme": {
-      "evm": "upto",
+      "evm": "exact",
       "svm": "exact"
     },
     "floorPrice": "0.01",
