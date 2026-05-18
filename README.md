@@ -101,7 +101,7 @@ Dynamic pricing based on document size. Settled instantly via x402 in USDC.
 |:-----|:-------------|:------------|:--------|
 | L1 — Lightweight | < 128KB | $0.01 – $0.05 | Single Gemini Flash call, ~3s |
 | L2 — Standard | 128KB – 3.2MB | $0.05 – $2.00 | Extract + cross-provider verify, ~10–30s |
-| L3 — Enterprise | > 3.2MB | $2.00 – $55.00 | MoA chunking pipeline, ~2–20min |
+| L3 — Enterprise | > 3.2MB | $0.58 – $3.16 | Chunked parallel pipeline, ~30s–2min |
 
 **No subscriptions. No API keys. No prepaid credits.**
 

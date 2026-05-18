@@ -20,12 +20,12 @@
   "tools": [
     {
       "name": "analyze_document",
-      "description": "Deep document analysis with cross-provider AI verification. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or MoA chunking (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
+      "description": "Deep document analysis with cross-provider AI verification. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or chunked parallel (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
       "maxInputSize": "20MB",
       "outputFormat": "structured_json",
-      "pricing": "dynamic — from $0.02 (small doc) to ~$55 (20MB). Call estimate_cost first.",
-      "floorPrice": "0.02",
-      "latency": "3s–20min depending on document size",
+      "pricing": "dynamic — from $0.01 (small doc) to ~$3.16 (20MB). Call estimate_cost first.",
+      "floorPrice": "0.01",
+      "latency": "3s–2min depending on document size",
       "paid": true
     },
     {
@@ -75,7 +75,7 @@
     "routing": {
       "tier1": "< 128KB — single Gemini Flash call, ~3s",
       "tier2": "128KB–3.2MB — extract + cross-provider verify, ~10–30s",
-      "tier3": "> 3.2MB — MoA chunking pipeline, ~2–20min"
+      "tier3": "> 3.2MB — Chunked parallel pipeline, ~30s–2min"
     }
   },
   "privacy": "Document content is transmitted to third-party LLM providers (Google, Anthropic) for processing. Do not submit documents containing passwords, private keys, SSNs, or other regulated PII."
