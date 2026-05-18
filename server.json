@@ -23,7 +23,7 @@
       "description": "Deep document analysis with cross-provider AI verification. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or chunked parallel (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
       "maxInputSize": "20MB",
       "outputFormat": "structured_json",
-      "pricing": "dynamic — from $0.01 (small doc) to ~$3.16 (20MB). Call estimate_cost first.",
+      "pricing": "dynamic — from $0.01 (small doc) to $15.00 (20MB cap). Call estimate_cost first.",
       "floorPrice": "0.01",
       "latency": "3s–2min depending on document size",
       "paid": true
