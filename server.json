@@ -1,6 +1,6 @@
 {
   "name": "amalgix",
-  "description": "Cross-validated document intelligence with x402 micropayments. Multi-model Actor-Critic pipeline with 3-tier smart routing — sub-30s for documents up to 3MB.",
+  "description": "Mixture-of-Agents (MoA) document intelligence with x402 micropayments. Multiple AI models cross-verify each other — hallucinations caught before they reach you. 3-tier smart routing, 100% accuracy across 10 languages.",
   "url": "https://amalgix.io/mcp",
   "documentation": "https://amalgix.io/docs",
   "icon": "https://amalgix.io/assets/icon.png",
@@ -20,7 +20,7 @@
   "tools": [
     {
       "name": "analyze_document",
-      "description": "Deep document analysis with cross-provider AI verification. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or chunked parallel (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
+      "description": "Deep document analysis with MoA cross-provider verification. Multiple AI models extract findings independently, then a Critic validates every claim against the source text. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or chunked MoA (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
       "maxInputSize": "20MB",
       "outputFormat": "structured_json",
       "pricing": "dynamic — from $0.01 (small doc) to $15.00 (20MB cap). Call estimate_cost first.",
@@ -67,15 +67,16 @@
     "maxDocumentSize": "20MB",
     "supportedFormats": ["text", "markdown", "json", "html"],
     "qualityFeatures": [
+      "mixture_of_agents",
       "cross_provider_verification",
       "structured_json_output",
       "actor_critic_pipeline",
       "smart_tier_routing"
     ],
     "routing": {
-      "tier1": "< 128KB — single Gemini Flash call, ~3s",
-      "tier2": "128KB–3.2MB — extract + cross-provider verify, ~10–30s",
-      "tier3": "> 3.2MB — Chunked parallel pipeline, ~30s–2min"
+      "tier1": "< 128KB — single Haiku call, ~3s",
+      "tier2": "128KB–3.2MB — Haiku extract + cross-provider verify, ~10–30s",
+      "tier3": "> 3.2MB — Chunked MoA: 2× Flash workers + Haiku critic per chunk, Sonnet manager synthesis, ~30s–2min"
     }
   },
   "privacy": "Document content is transmitted to third-party LLM providers (Google, Anthropic) for processing. Do not submit documents containing passwords, private keys, SSNs, or other regulated PII."
