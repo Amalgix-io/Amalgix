@@ -103,6 +103,22 @@ Dynamic pricing based on document size. Settled instantly via x402 in USDC.
 | L2 — Standard | 128KB – 3.2MB | $0.16 – $5.77 | Extract + cross-provider verify, ~10–30s |
 | L3 — Enterprise | > 3.2MB | $5.77 – $15.00 | Chunked MoA parallel pipeline, ~30s–2min |
 
+### Price by Document Size
+
+| File Size | Amalgix | Sonnet 4.6 | Opus 4.7 | GPT-5.5 Pro | vs Opus 4.7 | vs GPT-5.5 |
+|:---------:|:-------:|:----------:|:--------:|:-----------:|:-----------:|:----------:|
+| 250KB | **$0.45** | $0.56 | $0.94 | $1.63 | 52% cheaper | 72% cheaper |
+| 500KB | **$0.90** | $1.13 | $1.88 | $3.25 | 52% cheaper | 72% cheaper |
+| 1MB | **$1.80** | $2.25 | $3.75 | $6.50 | 52% cheaper | 72% cheaper |
+| 2MB | **$3.60** | $4.50 | $7.50 | $13.00 | 52% cheaper | 72% cheaper |
+| 3.2MB | **$5.77** | $7.20 | $12.00 | $20.80 | 52% cheaper | 72% cheaper |
+| 5MB | **$5.77** | $11.25 | $18.75 | $32.50 | 69% cheaper | 82% cheaper |
+| 10MB | **$8.25** | $22.50 | $37.50 | $65.00 | 78% cheaper | 87% cheaper |
+| 15MB | **$11.63** | $33.75 | $56.25 | $97.50 | 79% cheaper | 88% cheaper |
+| 20MB | **$15.00** | $45.00 | $75.00 | $130.00 | 80% cheaper | 88% cheaper |
+
+> 💡 Use the free `estimate_cost` tool to get an exact quote before any paid call.
+
 **No subscriptions. No API keys. No prepaid credits.**
 
 ## Benchmark Results
