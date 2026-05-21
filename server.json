@@ -23,7 +23,7 @@
       "description": "Deep document analysis with MoA cross-provider verification. Multiple AI models extract findings independently, then a Critic validates every claim against the source text. Automatically routes to fastest/cheapest pipeline: single-pass (<128KB), large-context (128KB–3.2MB), or chunked MoA (>3.2MB). Returns structured JSON with findings, evidence, and confidence scores.",
       "maxInputSize": "20MB",
       "outputFormat": "structured_json",
-      "pricing": "dynamic — from $0.01 (small doc) to $15.00 (20MB cap). Call estimate_cost first.",
+      "pricing": "dynamic — from $0.08 (small doc) to $15.00 (20MB cap). Call estimate_cost first.",
       "floorPrice": "0.01",
       "latency": "3s–2min depending on document size",
       "paid": true
