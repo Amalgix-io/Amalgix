@@ -51,12 +51,6 @@
       "paid": true
     },
     {
-      "name": "delegate_coding",
-      "description": "Generate, review, or extract code. Modes: generate, review, extract. Returns structured code blocks.",
-      "floorPrice": "0.02",
-      "paid": true
-    },
-    {
       "name": "delegate_bulk_translate",
       "description": "Translate all string values in a JSON object to any target language. Preserves structure and non-string values. Auto-chunks large payloads.",
       "floorPrice": "0.01",
