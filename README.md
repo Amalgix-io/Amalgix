@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/protocol-MCP-blue" alt="MCP">
   <img src="https://img.shields.io/badge/payment-x402%20USDC-green" alt="x402">
   <img src="https://img.shields.io/badge/chains-Base%20%7C%20Solana-purple" alt="Chains">
-  <img src="https://img.shields.io/badge/tools-7-orange" alt="Tools">
+  <img src="https://img.shields.io/badge/tools-6-orange" alt="Tools">
   <img src="https://img.shields.io/badge/accuracy-100%25-brightgreen" alt="Accuracy">
 </p>
 
@@ -79,10 +79,9 @@ npx agentcash try https://amalgix.io
 
 | Tool | Description | Pricing |
 |:-----|:------------|:--------|
-| `analyze_document` | Deep analysis with cross-provider verification. Structured JSON output with findings, evidence, and confidence scores. | Dynamic — from $0.02 |
-| `extract_web` | Extract and analyze content from any URL, including JS-rendered pages. | From $0.02 |
+| `analyze_document` | Deep analysis with cross-provider verification. Structured JSON output with findings, evidence, and confidence scores. | Dynamic — from $0.01 |
+| `extract_web` | Extract and analyze content from any URL, including JS-rendered pages. | From $0.01 |
 | `summarize` | Fast single-pass summarization with key points. Best for short documents. | From $0.01 |
-| `delegate_coding` | Generate, review, or extract code. Three modes in one tool. | From $0.02 |
 | `delegate_bulk_translate` | Translate all string values in a JSON object. Preserves structure. | From $0.01 |
 | `estimate_cost` | **FREE** — Get exact price quote before paying. | Free |
 | `health_check` | **FREE** — Check service availability and engine status. | Free |
