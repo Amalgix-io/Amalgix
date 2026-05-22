@@ -1,0 +1,14 @@
+# Amalgix — Smithery Configuration
+# Enables the Smithery installation wizard for one-click setup
+
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    properties: {}
+    required: []
+    additionalProperties: false
+  url: "https://amalgix.io/mcp"
+  headers:
+    Content-Type: "application/json"
+    Accept: "application/json, text/event-stream"
