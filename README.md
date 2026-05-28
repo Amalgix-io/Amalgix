@@ -5,13 +5,13 @@
 <h1 align="center">Amalgix</h1>
 
 <p align="center">
-  <strong>Document Intelligence Engine — MCP + REST + x402 Pay-Per-Call</strong>
+  <strong>Financial Filing & Contract Intelligence - MCP + REST + x402 Pay-Per-Call</strong>
 </p>
 
 <p align="center">
-  <a href="https://amalgix.io">Website</a> •
-  <a href="https://amalgix.io/openapi.json">OpenAPI Spec</a> •
-  <a href="https://smithery.ai/servers/amalgix/document-intelligence">Smithery</a> •
+  <a href="https://amalgix.io">Website</a> |
+  <a href="https://amalgix.io/openapi.json">OpenAPI Spec</a> |
+  <a href="https://smithery.ai/servers/amalgix/document-intelligence">Smithery</a> |
   <a href="https://www.x402scan.com/server/41885358-75a2-4c56-835e-83180b18d53a">x402scan</a>
 </p>
 
@@ -19,36 +19,30 @@
   <img src="https://img.shields.io/badge/protocol-MCP-blue" alt="MCP">
   <img src="https://img.shields.io/badge/payment-x402%20USDC-green" alt="x402">
   <img src="https://img.shields.io/badge/chains-Base%20%7C%20Solana-purple" alt="Chains">
-  <img src="https://img.shields.io/badge/tools-6-orange" alt="Tools">
-  <img src="https://img.shields.io/badge/accuracy-100%25-brightgreen" alt="Accuracy">
+  <img src="https://img.shields.io/badge/tools-8-orange" alt="Tools">
+  <img src="https://img.shields.io/badge/output-evidence--backed-brightgreen" alt="Evidence backed">
 </p>
 
 ---
 
 ## What is Amalgix?
 
-Amalgix is a **production-grade document intelligence API** powered by the proprietary **Crucible™ Engine** — a **Mixture-of-Agents (MoA)** architecture that runs multiple AI models against each other. Hallucinations get caught before they reach you.
+Amalgix is a crypto-native, MCP + REST intelligence API for AI agents that need evidence-backed facts from **financial filings** and **contracts**. The proprietary **Crucible™ Evidence Engine** powers the analysis path:
 
-- **MoA Cross-Verification** — multiple models (Gemini Flash, Haiku, Sonnet) independently analyze your document, then a Critic validates every finding against the source text. No single model can hallucinate unchecked.
-- **Up to 56x cheaper** than calling frontier models directly — MoA achieves higher accuracy than any single model while costing less than the cheapest one alone.
-- **Zero API keys** — pay per call with USDC via x402 protocol
-- **MCP-native + REST API** — works with any AI agent or HTTP client
+- **Source-grounded claims** - each material finding can include `claim`, `evidence`, `sourceRef`, `confidence`, and `verificationStatus`.
+- **Primary workflows** - Financial Filing Intelligence and Contract Risk Intelligence are first-class tools, not just prompt examples.
+- **SEC filing lookup** - `analyze_public_filing` accepts content, filing URLs, ticker, or CIK for 10-K, 10-Q, and 20-F workflows.
+- **MCP + REST access** - agents can call a single MCP endpoint or dedicated REST endpoints.
+- **x402 payments** - paid calls settle in USDC on Base or Solana.
+- **Wallet dashboard** - EVM wallet login and API keys identify dashboard/API usage; they do not represent prepaid credits.
 
-### Why Mixture-of-Agents?
-
-Calling a single LLM is fast but unreliable. Every model has blind spots — GPT misses Arabic/Russian data, Gemini drops Chinese entities, Opus hallucinates financial figures. Amalgix solves this with a **multi-model Actor-Critic pipeline**:
-
-1. **Multiple Workers** extract findings independently (different models, different perspectives)
-2. **A cross-provider Critic** validates every claim against the original source text
-3. **A Manager** synthesizes verified results into structured, confidence-scored output
-
-The result: **100% accuracy across 10 languages** in benchmark tests — something no single model achieves alone. And because MoA uses cost-efficient models (Haiku, Flash) in parallel instead of a single expensive one (Opus, GPT-5.5), it's dramatically cheaper too.
+Crucible is designed for evidence triage and agent workflows. It does not claim perfect accuracy, legal advice, or investment advice; responses expose confidence and verification metadata so downstream systems can inspect the basis for each finding.
 
 ## Quick Start
 
-### MCP (Recommended)
+### MCP
 
-Add to your MCP client config:
+Add Amalgix to any Streamable HTTP MCP-compatible client:
 
 ```json
 {
@@ -61,114 +55,121 @@ Add to your MCP client config:
 }
 ```
 
-### REST API
+### REST
 
 ```bash
-curl -X POST https://amalgix.io/api/health_check
+curl -X GET https://amalgix.io/api/v1/health
 ```
 
-All paid endpoints require x402 payment headers. Use `estimate_cost` (free) to preview pricing before any paid call.
-
-### Try It Instantly
-
-```bash
-npx agentcash try https://amalgix.io
-```
+Paid endpoints require x402 payment headers. Use `estimate_cost` first to preview pricing before any paid call.
 
 ## Tools
 
 | Tool | Description | Pricing |
 |:-----|:------------|:--------|
-| `analyze_document` | Deep analysis with cross-provider verification. Structured JSON output with findings, evidence, and confidence scores. | Dynamic — from $0.01 |
-| `extract_web` | Extract and analyze content from any URL, including JS-rendered pages. | From $0.01 |
-| `summarize` | Fast single-pass summarization with key points. Best for short documents. | From $0.01 |
-| `delegate_bulk_translate` | Translate all string values in a JSON object. Preserves structure. | From $0.01 |
-| `estimate_cost` | **FREE** — Get exact price quote before paying. | Free |
-| `health_check` | **FREE** — Check service availability and engine status. | Free |
+| `analyze_public_filing` | Financial Filing Intelligence for public SEC filings. Accepts content, filingUrl, ticker, or CIK for 10-K, 10-Q, and 20-F workflows. | $0.03-$79.00 |
+| `review_contract_risks` | Contract Risk Intelligence for clauses, obligations, liability exposure, missing clauses, unusual terms, evidence, and human-review flags. Not legal advice. | $0.03-$79.00 |
+| `analyze_document` | General evidence analysis with source-grounded findings, confidence, and verification status. | $0.03-$79.00 |
+| `extract_web` | Static/server-rendered public web content extraction with optional analysis. | From $0.01 |
+| `summarize` | Fast single-pass summarization with key points. | From $0.01 |
+| `delegate_bulk_translate` | Translate JSON string values while preserving object structure. | From $0.01 |
+| `estimate_cost` | Free pre-flight cost preview for paid tools or workflows. | Free |
+| `health_check` | Free service health and engine availability check. | Free |
 
-## How It Works — Crucible™ MoA Pipeline
+## REST Endpoints
 
+| Endpoint | Method | Purpose |
+|:---------|:-------|:--------|
+| `/api/v1/filings/analyze` | POST | Financial Filing Intelligence |
+| `/api/v1/contracts/review` | POST | Contract Risk Intelligence |
+| `/api/v1/analyze` | POST | General Crucible™ evidence analysis |
+| `/api/v1/cost` | POST | Cost estimation, free |
+| `/api/v1/health` | GET | Health check, free |
+| `/api/v1/auth/evm/nonce` | POST | Create wallet-login challenge, free |
+| `/api/v1/auth/evm/verify` | POST | Verify wallet signature, free |
+| `/api/v1/api-keys` | GET/POST | List or create API keys after wallet login, free |
+| `/api/v1/jobs` | GET | Recent analysis jobs after wallet login, free |
+| `/api/v1/requests` | GET | Recent request logs after wallet login, free |
+| `/api/v1/payments` | GET | Recent x402 payment events after wallet login, free |
+
+> **Legacy REST tools** (`/api/v1/extract`, `/api/v1/summarize`, `/api/v1/translate`) are available as operator opt-in via `AMALGIX_ENABLE_LEGACY_REST_TOOLS=true`. They remain accessible through MCP by default.
+
+## Crucible™ Output Contract
+
+Crucible normalizes evidence into a stable shape for agents:
+
+```json
+{
+  "analysis": {
+    "summary": "...",
+    "evidenceFindings": [
+      {
+        "claim": "...",
+        "evidence": "...",
+        "sourceRef": "document:line:12",
+        "confidence": "high",
+        "verificationStatus": "supported"
+      }
+    ],
+    "overallConfidence": "high"
+  },
+  "meta": {
+    "engine": "Crucible™ Evidence Engine",
+    "analysisType": "general_evidence",
+    "routingTier": "large_context",
+    "estimatedCost": 0.03
+  }
+}
 ```
-                          ┌─ Worker A (Gemini Flash) ─┐
-Document → Smart Router → ├─ Worker B (Gemini Flash) ─┼→ Critic (Haiku) → Manager (Sonnet) → Output
-              ↓           └─ (parallel extraction)  ──┘    ↓                 ↓
-         3-Tier Routing                              Cross-Verify vs     Synthesize +
-         (T1/T2/T3)                                  source text       confidence scores
-```
 
-1. **Ingest** — Document, URL, or raw text up to 20MB. Auto-detected language and format.
-2. **Smart Routing** — 3-tier router selects the optimal pipeline: single-pass (T1), large-context (T2), or chunked MoA (T3).
-3. **MoA Extraction** — Multiple Workers extract findings independently from different angles (breadth vs depth).
-4. **Cross-Verify (CoVe)** — A cross-provider Critic validates every finding against the original source text. Contradictions flagged, hallucinations eliminated.
-5. **Synthesize** — Manager merges verified results into schema-enforced structured JSON with confidence scores.
+Analysis modes:
+
+- `general_evidence`
+- `financial_filing`
+- `contract_review`
 
 ## Pricing
 
-Dynamic pricing based on document size. Settled instantly via x402 in USDC.
+Dynamic pricing is based on document size and request complexity. Settlement uses x402 with USDC.
+Prices scale dynamically with document size and request complexity, from a $0.03 floor to a $79 hard safety ceiling. Remote URLs and SEC ticker/CIK lookups are pre-estimated before payment; unknown remote sizes use conservative protection.
 
-| Tier | Document Size | Price Range | Routing |
-|:-----|:-------------|:------------|:--------|
-| L1 — Lightweight | < 128KB | $0.01 – $0.16 | Single Haiku call, ~3s |
-| L2 — Standard | 128KB – 3.2MB | $0.16 – $5.77 | Haiku extract + cross-provider verify, ~10–30s |
-| L3 — Enterprise | > 3.2MB | $5.77 – $15.00 | Chunked MoA: 2× Flash workers + Haiku critic per chunk, Sonnet manager synthesis, ~30s–2min |
+| Tool family | Price range |
+|:------------|:------------|
+| Crucible analysis tools | $0.03-$79.00 |
+| Web extraction | $0.01-$8.00 |
+| Summarization | $0.01-$15.00 |
+| Bulk translation | $0.01-$15.00 |
+| Cost and health tools | Free |
 
-### Price by Document Size
-
-| File Size | Amalgix | Opus 4.7 | GPT-5.5 Pro | vs Opus 4.7 |
-|:---------:|:-------:|:--------:|:-----------:|:-----------:|
-| 250KB | **$0.45** | $0.94 | $1.63 | 52% cheaper |
-| 1MB | **$1.80** | $3.75 | $6.50 | 52% cheaper |
-| 3.2MB | **$5.77** | $12.00 | $20.80 | 52% cheaper |
-| 5MB | **$5.77** | $18.75 | $32.50 | 69% cheaper |
-| 10MB | **$8.25** | $37.50 | $65.00 | 78% cheaper |
-| 20MB | **$15.00** | $75.00 | $130.00 | 80% cheaper |
-
-> 💡 Use the free `estimate_cost` tool to get an exact quote before any paid call.
-
-**No subscriptions. No API keys. No prepaid credits.**
-
-## Benchmark Results
-
-Tested on real enterprise documents (Samsung, Toyota, Aramco, Inditex, LVMH):
-
-| Metric | Amalgix | GPT-5.5-Pro | Opus 4.7 | Gemini 3.1 Pro |
-|:-------|:--------|:------------|:---------|:---------------|
-| 5-Dimension Accuracy | **100%** | 100% | 100% | 85.5% |
-| 10-Language Accuracy | **100%** | 90.6% | 95.0% | 73.9% |
-| Chinese Document | **100%** | 100% | 50% | 27% |
-| Arabic + Russian | **100%** | 53% | 100% | 78% |
-| Hallucinations | **0** | 0 | 0 | 0 |
-| Cost per test | **$0.034** | $1.892 | $0.119 | $0.074 |
-| Cost Efficiency vs GPT | **56x** | 1x | 16x | 26x |
+Use the free `estimate_cost` tool for a request-specific quote.
 
 ## Payment
 
-Amalgix uses the [x402 protocol](https://www.x402.org/) for trustless micropayments:
+Amalgix uses the [x402 protocol](https://www.x402.org/) for pay-per-call settlement:
 
 - **Currency**: USDC
 - **Chains**: Base (EVM) or Solana (SVM)
-- **Scheme**: `exact` (both chains — ceiling pre-auth, settle actual price)
-- **Settlement**: Instant, on-chain
-
-No wallet setup required for agents — x402-compatible clients handle payment automatically.
+- **Scheme**: `exact`
+- **Authentication**: x402 for paid execution; optional wallet/API key identity for dashboard and REST attribution
 
 ## Security & Privacy
 
-- **Zero Storage** — Documents processed in volatile memory only, never written to disk
-- **Encrypted Transit** — All connections use TLS; no document content in logs
-- **Third-Party Processing** — Content is sent to LLM providers (Google, Anthropic) for analysis
-- **PII Redaction** — Built-in output guard removes sensitive data from responses
-
-⚠️ Do not submit documents containing passwords, private keys, SSNs, or other regulated PII.
+- Contract raw text is not persisted by default; Amalgix stores hashes, metadata, job status, and optional results only when configured.
+- Public financial filing metadata may be cached because filings are public.
+- Connections use TLS.
+- Paid analysis content is sent to third-party LLM providers for processing.
+- Do not submit passwords, private keys, SSNs, classified data, or other regulated PII.
+- Contract and filing outputs are evidence triage only, not legal or investment advice.
 
 ## Links
 
-- 🌐 **Website**: [amalgix.io](https://amalgix.io)
-- 📖 **API Docs**: [amalgix.io → Docs](https://amalgix.io/#docs)
-- 🔌 **MCP Registry**: [Smithery](https://smithery.ai/servers/amalgix/document-intelligence)
-- 💰 **x402 Listing**: [x402scan](https://www.x402scan.com/server/41885358-75a2-4c56-835e-83180b18d53a)
-- 📧 **Contact**: contact@amalgix.io
+- **Website**: [amalgix.io](https://amalgix.io)
+- **API Docs**: [amalgix.io/#docs](https://amalgix.io/#docs)
+- **OpenAPI**: [amalgix.io/openapi.json](https://amalgix.io/openapi.json)
+- **MCP Registry**: [Smithery](https://smithery.ai/servers/amalgix/document-intelligence)
+- **x402 Listing**: [x402scan](https://www.x402scan.com/server/41885358-75a2-4c56-835e-83180b18d53a)
+- **Contact**: contact@amalgix.io
 
 ## License
 
-All Rights Reserved © 2026 Amalgix. This repository contains documentation and configuration files only. The Amalgix engine source code is proprietary and not included.
+All Rights Reserved (c) 2026 Amalgix. This repository contains documentation and configuration files only. The Amalgix engine source code is proprietary and not included.

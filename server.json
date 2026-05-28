@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.Amalgix-io/Amalgix",
   "version": "1.0.0",
-  "description": "MoA document intelligence — multiple AI models cross-verify for 100% recall across 10 languages.",
+  "description": "Evidence-backed financial filing and contract intelligence for AI agents. Pay per call with x402 USDC; MCP and REST available.",
   "websiteUrl": "https://amalgix.io",
   "repository": {
     "url": "https://github.com/Amalgix-io/Amalgix",
