@@ -5,7 +5,8 @@
 <h1 align="center">Amalgix</h1>
 
 <p align="center">
-  <strong>Financial Filing & Contract Intelligence - MCP + REST + x402 Pay-Per-Call</strong>
+  <strong>Cross-Model Evidence Pipeline for Financial Filings & Contracts</strong><br>
+  <em>MCP + REST · x402 Pay-Per-Call · Up to 3.8x cheaper than calling frontier models directly</em>
 </p>
 
 <p align="center">
@@ -25,16 +26,36 @@
 
 ---
 
+## Why Amalgix?
+
+AI agents that need evidence-backed facts from financial filings and contracts face a problem: calling frontier models like Opus 4.8 or GPT-5.5 is expensive, and a single call doesn't produce verified evidence — you need at least two passes (extract + verify) to get source-grounded output.
+
+**Amalgix solves this with a cross-model evidence pipeline:**
+
+1. **Model A extracts** — A specialized extraction model pulls structured findings from your document. Each claim is tied to a verbatim quote, confidence score, and source reference.
+2. **Model B verifies** — A different model cross-checks every finding against the original source. Contradictions are flagged; unsupported claims are marked for review — not presented as facts.
+3. **You pay less** — Because each stage uses the optimal model for the job (not the most expensive one), the total pipeline cost is significantly lower than running frontier models yourself.
+
+### Cost Comparison (1MB Document)
+
+| Provider | Pipeline Cost | vs Amalgix |
+|:---------|:-------------|:-----------|
+| **Amalgix** | **$0.82** | — |
+| Opus 4.8 (2-pass) | $2.88 | 3.5x more |
+| GPT-5.5 (2-pass) | $3.12 | 3.8x more |
+
+> Competitor costs represent what it takes to replicate Amalgix's extract → verify output using those models directly (2-pass, ~15% + ~10% output ratio).
+
 ## What is Amalgix?
 
-Amalgix is a crypto-native, MCP + REST intelligence API for AI agents that need evidence-backed facts from **financial filings** and **contracts**. The proprietary **Crucible™ Evidence Engine** powers the analysis path:
+A crypto-native, MCP + REST intelligence API for AI agents. The proprietary **Crucible™ Evidence Engine** orchestrates the cross-model pipeline:
 
-- **Source-grounded claims** - each material finding can include `claim`, `evidence`, `sourceRef`, `confidence`, and `verificationStatus`.
-- **Primary workflows** - Financial Filing Intelligence and Contract Risk Intelligence are first-class tools, not just prompt examples.
-- **SEC filing lookup** - `analyze_public_filing` accepts content, filing URLs, ticker, or CIK for 10-K, 10-Q, and 20-F workflows.
-- **MCP + REST access** - agents can call a single MCP endpoint or dedicated REST endpoints.
-- **x402 payments** - paid calls settle in USDC on Base or Solana.
-- **Wallet dashboard** - EVM wallet login and API keys identify dashboard/API usage; they do not represent prepaid credits.
+- **Source-grounded claims** — each material finding includes `claim`, `evidence`, `sourceRef`, `confidence`, and `verificationStatus`
+- **Cross-model verification** — extraction and verification use different models, catching errors that single-model approaches miss
+- **Financial Filing Intelligence** — SEC 10-K, 10-Q, and 20-F analysis by content, filing URL, ticker, or CIK
+- **Contract Risk Intelligence** — clauses, obligations, deadlines, liability, missing terms, and evidence
+- **x402 payments** — paid calls settle in USDC on Base or Solana. No API keys required, no subscriptions
+- **Wallet dashboard** — EVM wallet login for request history and API key management
 
 Crucible is designed for evidence triage and agent workflows. It does not claim perfect accuracy, legal advice, or investment advice; responses expose confidence and verification metadata so downstream systems can inspect the basis for each finding.
 
@@ -130,16 +151,14 @@ Analysis modes:
 
 ## Pricing
 
-Dynamic pricing is based on document size and request complexity. Settlement uses x402 with USDC.
-Prices scale dynamically with document size and request complexity, from a $0.03 floor to a $79 hard safety ceiling. Remote URLs and SEC ticker/CIK lookups are pre-estimated before payment; unknown remote sizes use conservative protection.
+Dynamic pricing based on document size. Amalgix's cross-model pipeline delivers equivalent evidence quality at a fraction of single-model cost:
 
-| Tool family | Price range |
-|:------------|:------------|
-| Crucible analysis tools | $0.03-$79.00 |
-| Web extraction | $0.01-$8.00 |
-| Summarization | $0.01-$15.00 |
-| Bulk translation | $0.01-$15.00 |
-| Cost and health tools | Free |
+| File Size | Amalgix | Opus 4.8 (2-pass) | GPT-5.5 (2-pass) | Savings |
+|:----------|:--------|:-------------------|:-------------------|:--------|
+| 256KB | $0.30 | $0.76 | $0.82 | 59-62% |
+| 1MB | $0.82 | $2.88 | $3.12 | 72-74% |
+| 5MB | $7.36 | $12.12 | $13.14 | 39-44% |
+| 20MB | $29.42 | $46.52 | $50.50 | 37-42% |
 
 Use the free `estimate_cost` tool for a request-specific quote.
 
