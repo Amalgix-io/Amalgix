@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.Amalgix-io/Amalgix",
-  "version": "1.0.0",
-  "description": "Evidence-backed financial filing and contract intelligence for AI agents. Pay per call with x402 USDC; MCP and REST available.",
+  "version": "1.1.0",
+  "description": "Cross-model evidence pipeline for financial filings & contracts. x402 pay-per-call.",
   "websiteUrl": "https://amalgix.io",
   "repository": {
     "url": "https://github.com/Amalgix-io/Amalgix",
