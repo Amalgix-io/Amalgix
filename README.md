@@ -13,7 +13,8 @@
   <a href="https://amalgix.io">Website</a> |
   <a href="https://amalgix.io/openapi.json">OpenAPI Spec</a> |
   <a href="https://smithery.ai/servers/amalgix/document-intelligence">Smithery</a> |
-  <a href="https://www.x402scan.com/server/41885358-75a2-4c56-835e-83180b18d53a">x402scan</a>
+  <a href="https://www.x402scan.com/server/41885358-75a2-4c56-835e-83180b18d53a">x402scan</a> |
+  <a href="https://x.com/AmalgixHQ">X (Twitter)</a>
 </p>
 
 <p align="center">
