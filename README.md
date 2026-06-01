@@ -188,6 +188,7 @@ Amalgix uses the [x402 protocol](https://www.x402.org/) for pay-per-call settlem
 - **OpenAPI**: [amalgix.io/openapi.json](https://amalgix.io/openapi.json)
 - **MCP Registry**: [Smithery](https://smithery.ai/servers/amalgix/document-intelligence)
 - **x402 Listing**: [x402scan](https://www.x402scan.com/server/41885358-75a2-4c56-835e-83180b18d53a)
+- **Official X**: [@AmalgixHQ](https://x.com/AmalgixHQ)
 - **Contact**: contact@amalgix.io
 
 ## License
